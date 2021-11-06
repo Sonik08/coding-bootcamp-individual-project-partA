@@ -133,6 +133,7 @@ namespace IndividualPartA
 
         //START - METHOD FOR STUDENT CLASS
 
+        //The following method assigns to student class' object a DateTime value
         public static DateTime GetDateOfBirth()
         {
             Console.WriteLine("Please enter a valid Date of Birth");
@@ -147,8 +148,10 @@ namespace IndividualPartA
 
         //END - METHOD FOR STUDENT CLASS
 
+
         //START - METHODS FOR ASSIGNMENT CLASS
 
+        //The following method assigns to assignment class' object a DateTime value
         public static DateTime GetSubmissionDate()
         {
             Console.WriteLine("Please enter a valid submission date");
@@ -160,10 +163,10 @@ namespace IndividualPartA
 
             return submissionDate;
         }
-
+        //The following method assigns to assignment class' object an integer value
         public static int GetMark(string typeText)
         {
-            Console.WriteLine($"Please enter a valid {typeText}. Mark format 0 - 100");
+            Console.WriteLine($"Please enter a valid {typeText} mark. Mark format 0 - 100");
             bool isMark = int.TryParse(Console.ReadLine(), out int mark);
 
             while (!isMark)
@@ -172,7 +175,7 @@ namespace IndividualPartA
                 isMark = int.TryParse(Console.ReadLine(), out mark);
             }
 
-            while (mark > 100 || mark <0)
+            while (mark > 100 || mark <= 0)
             {
                 Console.WriteLine($"Invalid input. Please enter a valid {typeText} mark");
                 isMark = int.TryParse(Console.ReadLine(), out mark);
