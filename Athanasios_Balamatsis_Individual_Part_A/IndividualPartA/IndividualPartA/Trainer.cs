@@ -27,8 +27,7 @@ namespace IndividualPartA
         {
             Console.WriteLine(FirstName);
             Console.WriteLine(LastName);
-            Console.WriteLine(Subject);
-            
+            Console.WriteLine(Subject);            
         }
     }
 }

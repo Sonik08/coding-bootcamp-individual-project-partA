@@ -9,9 +9,20 @@ namespace IndividualPartA
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            
+            var listAllCourses = new List<Course>();
+            Console.WriteLine(listAllCourses.Count);
 
+            listAllCourses.Add(new Course());
+            listAllCourses.Add(new Course());
+            listAllCourses.Add(new Course());
+
+            foreach (Course course in listAllCourses)
+            {
+                course.ShowData();
+            }
             //Course firstCourse = new Course();
             //firstCourse.ShowData();
 
@@ -25,10 +36,10 @@ namespace IndividualPartA
             //Student firstStudent = new Student();
             //firstStudent.ShowData();
 
-            Assignment firstAssignment = new Assignment();
-            firstAssignment.ShowData();
+            //Assignment firstAssignment = new Assignment();
+            //firstAssignment.ShowData();
 
-            
+
 
         }
     }

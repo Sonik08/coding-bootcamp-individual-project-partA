@@ -30,6 +30,7 @@ namespace IndividualPartA
         private CourseType CourseType { get; set; }
         private DateTime CourseStartDate { get; set; }
         private DateTime CourseEndDate { get; set; }
+        
 
 
         // Constructors
@@ -42,7 +43,7 @@ namespace IndividualPartA
             CourseEndDate = Helper.GetCourseEndDate();
         }
 
-
+        // Methods
         public void ShowData()
         {
             Console.WriteLine(CourseTitle);
@@ -51,6 +52,8 @@ namespace IndividualPartA
             Console.WriteLine(CourseStartDate);
             Console.WriteLine(CourseEndDate);
         }
+
+
 
     }
         
