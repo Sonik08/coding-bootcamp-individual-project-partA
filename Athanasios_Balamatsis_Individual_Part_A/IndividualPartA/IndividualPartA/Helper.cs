@@ -10,7 +10,7 @@ namespace IndividualPartA
     {
         // START - METHODS OF COURSE CLASS
 
-        //The following method assigns to the Course class the courseTitle value
+        //The following method assigns to the Course class object the courseTitle value
         //While loop until user's input is valid. Validation within loop by calling IsValidCourseTitle()
         //courseTitle converted to Uppercase before returned
         public static string GetCourseTitle()
@@ -30,12 +30,14 @@ namespace IndividualPartA
             return courseTitle;
         }
 
+        //The following method assigns to the Course class object the courseStream value
+        //While loop until user's input is valid. Validation within loop by calling IsValidCourseStream()
         public static CourseStream GetCourseStream()
         {
             Console.WriteLine("Please enter a valid Course Stream. Valid inputs: Java, CSharp, Python, JavaScript");
             string courseStream = Console.ReadLine();
 
-            while (!(InputValidation.isValidCourseStream(courseStream)))
+            while (!(InputValidation.IsValidCourseStream(courseStream)))
             {
                 Console.WriteLine("Invalid input. Please enter a valid Course Stream. Valid inputs: Java, CSharp, Python, JavaScript");
                 courseStream = Console.ReadLine();
@@ -45,20 +47,140 @@ namespace IndividualPartA
             return (CourseStream)Enum.Parse(typeof (CourseStream), courseStream.ToUpper());
         }
 
-        //public static CourseType GetCourseType()
-        //{
+        //The following method assigns to the Course class object the courseType value
+        //While loop until user's input is valid. Validation within loop by calling IsValidCourseType()
+        public static CourseType GetCourseType()
+        {
+            Console.WriteLine("Please enter a valid Course Type. Valid inputs: FT , PT . FT stands for Full-Time, PT stands for Part-Time");
+            string courseType = Console.ReadLine();
 
-        //}
+            while (!(InputValidation.IsValidCourseType(courseType)))
+            {
+                Console.WriteLine("Invalid input. Please enter a valid Course Type. Valid inputs: FT , PT . FT stands for Full-Time, PT stands for Part-Time");
+                courseType = Console.ReadLine();
+            }
 
-        //public static DateTime GetCourseStartDate()
-        //{
 
-        //}
+            return (CourseType)Enum.Parse(typeof(CourseType), courseType.ToUpper());
+        }
 
-        //public static DateTime GetCourseEndDate()
-        //{
+        //The following method assigns to the Course class object the courseStartDate value
+        //
+        public static DateTime GetCourseStartDate()
+        {
+            //Console.WriteLine("Please enter a valid Course Start Date. Valid input format: dd/mm/yyyy example: 30/05/2020 ");
+            //int courseStartDate = Console.ReadLine();
 
-        //}
+            //while (!(InputValidation.IsValidCourseStartDate(courseStartDate)))
+            //{
+            //    Console.WriteLine("Invalid input. Please enter a valid Course Start Date. Valid input format: dd/mm/yyyy example: 30/05/2020 ");
+            //    courseStartDate = Console.ReadLine();
+            //}
+
+            //DateTime courseStartDateConverted = Convert.ToDateTime(courseStartDate);
+            var today = DateTime.Today;
+
+            return today;
+        }
+
+        //The following method assigns to the Course class object the courseEndDate value
+        //
+        public static DateTime GetCourseEndDate()
+        {
+            var today = DateTime.Today;
+            var endDate = today.AddDays(+90);
+
+            return endDate;
+        }
         // END - METHODS OF COURSE CLASS
+
+
+        //START - COMMON METHODS FOR TRAINER & STUDENT CLASS
+
+        //The following method assigns to different classes' object a string value
+        public static string GetName(string stringType)
+        {
+            Console.WriteLine($"Please enter a valid {stringType}");
+            string name = Console.ReadLine();
+            bool containsInt = name.Any(char.IsDigit);
+
+            while (containsInt)
+            {
+                Console.WriteLine($"Invalid input. Please enter a valid {stringType}");
+                name = Console.ReadLine();
+                containsInt = name.Any(char.IsDigit);
+            }
+
+            return name.ToUpper();
+        }
+
+        //The following method assigns to different classes' object a string value
+        public static string GetText(int numberOfCharacters, string stringType)
+        {
+            Console.WriteLine($"Please enter a valid {stringType}. Maximum number of characters: {numberOfCharacters}");
+            string text = Console.ReadLine();
+
+            while(text.Length > numberOfCharacters)
+            {
+                Console.WriteLine($"Invalid input. Please enter a valid {stringType}. Maximum number of characters: {numberOfCharacters}");
+                text = Console.ReadLine();
+            }
+
+            return text.ToUpper();
+        }
+        //END - COMMON METHODS FOR TRAINER & STUDENT CLASS
+
+
+        //START - METHOD FOR STUDENT CLASS
+
+        public static DateTime GetDateOfBirth()
+        {
+            Console.WriteLine("Please enter a valid Date of Birth");
+            DateTime dateOfBirth;
+
+            var today = DateTime.Today;
+            var timespan = new TimeSpan(30);
+            dateOfBirth = today.Subtract(timespan);
+
+            return dateOfBirth; 
+        }
+
+        //END - METHOD FOR STUDENT CLASS
+
+        //START - METHODS FOR ASSIGNMENT CLASS
+
+        public static DateTime GetSubmissionDate()
+        {
+            Console.WriteLine("Please enter a valid submission date");
+            DateTime submissionDate;
+
+            var today = DateTime.Today;
+            var timespan = new TimeSpan(30);
+            submissionDate = today.Subtract(timespan);
+
+            return submissionDate;
+        }
+
+        public static int GetMark(string typeText)
+        {
+            Console.WriteLine($"Please enter a valid {typeText}. Mark format 0 - 100");
+            bool isMark = int.TryParse(Console.ReadLine(), out int mark);
+
+            while (!isMark)
+            {
+                Console.WriteLine($"Invalid input. Please enter a valid {typeText} mark");
+                isMark = int.TryParse(Console.ReadLine(), out mark);
+            }
+
+            while (mark > 100 || mark <0)
+            {
+                Console.WriteLine($"Invalid input. Please enter a valid {typeText} mark");
+                isMark = int.TryParse(Console.ReadLine(), out mark);
+            }
+
+            return mark;
+        }
+
+        //END - METHODS FOR ASSIGNMENT CLASS
     }
 }

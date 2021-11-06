@@ -27,9 +27,9 @@ namespace IndividualPartA
         // Fields & Properties
         private string CourseTitle { get; set; }
         private CourseStream CourseStream { get; set; }
-        //private CourseType CourseType { get; set; }
-        //private DateTime CourseStartDate { get; set; }
-        //private DateTime CourseEndDate { get; set; }
+        private CourseType CourseType { get; set; }
+        private DateTime CourseStartDate { get; set; }
+        private DateTime CourseEndDate { get; set; }
 
 
         // Constructors
@@ -37,9 +37,9 @@ namespace IndividualPartA
         {
             CourseTitle = Helper.GetCourseTitle();
             CourseStream = Helper.GetCourseStream();
-            //CourseType = Helper.GetCourseType();
-            //CourseStartDate = Helper.GetCourseStartDate();
-            //CourseEndDate = Helper.GetCourseEndDate();
+            CourseType = Helper.GetCourseType();
+            CourseStartDate = Helper.GetCourseStartDate();
+            CourseEndDate = Helper.GetCourseEndDate();
         }
 
 
@@ -47,6 +47,9 @@ namespace IndividualPartA
         {
             Console.WriteLine(CourseTitle);
             Console.WriteLine(CourseStream);
+            Console.WriteLine(CourseType);
+            Console.WriteLine(CourseStartDate);
+            Console.WriteLine(CourseEndDate);
         }
 
     }

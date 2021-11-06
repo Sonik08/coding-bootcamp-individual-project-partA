@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace IndividualPartA
 {
@@ -39,19 +41,29 @@ namespace IndividualPartA
 
         //The following method checks whether a course stream is valid
         //Requirement #1: the course stream input will be valid only if it matches with one of the elements of the validInputsArray array
-        public static bool isValidCourseStream(string courseStream)
+        public static bool IsValidCourseStream(string courseStream)
         {
             string CourseStreamUpperCase = courseStream.ToUpper();
             string[] validInputsArray = new string[4] { "JAVA", "CSHARP", "PYTHON", "JAVASCRIPT" };
-            //foreach (string validInput in validInputsArray)
-            //{
-            //    if (toUpperCourseStream == validInput)
-            //    {
-            //        return true;
-            //    }
-            //}
 
             return Array.Exists(validInputsArray, element => element == CourseStreamUpperCase);
         }
+
+        //The following method checks whether a course type is valid
+        //Requirement #1: the course type input will be valid only if it matches with one of the elements of the validInputsArray array
+        public static bool IsValidCourseType(string courseType)
+        {
+            string CourseTypeUpperCase = courseType.ToUpper();
+            string[] validInputsArray = new string[2] { "FT", "PT" };
+
+            return Array.Exists(validInputsArray, element => element == CourseTypeUpperCase);
+        }
+
+
+        //public static bool IsValidCourseStartDate(string courseStartDate)
+        //{
+        //    if (courseSt)
+        //    return true;
+        //}
     }
 }
