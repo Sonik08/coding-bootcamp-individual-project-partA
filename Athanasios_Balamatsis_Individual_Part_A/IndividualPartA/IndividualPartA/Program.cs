@@ -66,39 +66,34 @@ namespace IndividualPartA
                 else
                 {
                     Console.WriteLine("Please Select one of the following courses");
+                    Console.WriteLine(" ");
                     int courseIndex = 0;
                     foreach (Course course in listAllCourses)
                     {
                         Console.WriteLine($"Press {courseIndex} for the course with id {courseIndex}, title '{course.ShowCourseTitle()}', stream '{course.ShowCourseStream()} and type '{course.ShowCourseType()}'");
-                        Console.WriteLine("");
                         Console.WriteLine("___________________________");
+                        courseIndex++;
                     }
 
                     Console.WriteLine("Please enter the course id of your choice");
                     bool isNumber = int.TryParse(Console.ReadLine(), out int indexSelected);
-                    while (!isNumber)
+
+                    while (!isNumber || indexSelected >= courseIndex)
                     {
                         Console.WriteLine("Invalid input. Please enter the valid course id of your choice");
-                        isNumber = int.TryParse(Console.ReadLine(), out indexSelected);
-                        if ( isNumber == false)
-                        {
-
-                        }
+                        isNumber = int.TryParse(Console.ReadLine(), out indexSelected);                        
                     }
                     
-                    bool isWithinRange = (indexSelected >= 0 && indexSelected < listAllCourses.Count) ? true:false;
-                    while (!isWithinRange || !isNumber)
-                    {
-                        Console.WriteLine("Invalid input. Please enter the valid course id of your choice");
-                        isNumber = int.TryParse(Console.ReadLine(), out indexSelected);
-                    }
-
-
-                    Console.WriteLine();
-
+                    Console.WriteLine("You have selected the following course");
+                    listAllCourses[indexSelected].ShowData();
+                    Console.WriteLine(listAllCourses[indexSelected] is Course);
+                    Console.WriteLine(tempStudent is Student);
+                    listAllCourses[indexSelected].AddStudentToCourse(tempStudent);
+                    Console.WriteLine(listAllCourses[indexSelected].ReturnListStudentsOfCourse().Count());
+                    Console.WriteLine("Successfully subscribed to the course");
                 }
-                listAllCourses
-                Course.AddStudentToCourse(tempStudent);
+                
+                //Course.AddStudentToCourse(tempStudent);
             }
 
             // Define method that creates instance of Assignment and stores it to the listAllAssignments list
@@ -109,8 +104,9 @@ namespace IndividualPartA
 
             CreateCourse();
             CreateCourse();
+            CreateStudent();
             
-            Helper.PrintAllCourses(listAllCourses);
+            //Helper.PrintAllCourses(listAllCourses);
 
 
 

@@ -104,6 +104,24 @@ namespace IndividualPartA
 
             return endDate;
         }
+
+        //The following method assigns to the Course class instance an empty List of students of the instance
+        public static List<Student> GetEmptyListStudentsOfCourse()
+        {
+            List<Student> emptyListStudentsOfCourse = new List<Student>() { };
+
+            return emptyListStudentsOfCourse; 
+        }
+
+        //The following method assigns to the Course class instance an empty List of trainers of the instance
+        public static List<Trainer> GetEmptyListTrainersOfCourse()
+        {
+            List<Trainer> emptyListTrainersOfCourse = new List<Trainer>() { };
+
+            return emptyListTrainersOfCourse;
+        }
+
+
         // END - METHODS OF COURSE CLASS
 
 
