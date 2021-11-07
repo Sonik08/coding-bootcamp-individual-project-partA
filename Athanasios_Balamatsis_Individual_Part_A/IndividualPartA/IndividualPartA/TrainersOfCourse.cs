@@ -8,9 +8,20 @@ namespace IndividualPartA
 {
     class TrainersOfCourse
     {
-        public List<Trainer> ListOfTrainersOfCourse = new List<Trainer>()
-        {
+        //fields & properties
+        private static List<Trainer> ListTrainersOfCourse = new List<Trainer>() { };
 
-        };
+
+        //method
+        public void AddTrainerToCourse(Trainer trainer)
+        {
+            ListTrainersOfCourse.Add(trainer);
+        }
+
+        public List<Trainer> ReturnListTrainersOfCourse()
+        {
+            return ListTrainersOfCourse;
+        }
+
     }
 }

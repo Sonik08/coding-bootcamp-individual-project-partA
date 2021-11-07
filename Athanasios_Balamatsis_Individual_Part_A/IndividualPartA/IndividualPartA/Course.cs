@@ -30,8 +30,10 @@ namespace IndividualPartA
         private CourseType CourseType { get; set; }
         private DateTime CourseStartDate { get; set; }
         private DateTime CourseEndDate { get; set; }
-        private List<Student> ListStudentsOfCourse { get; set; } = new List<Student>() { };
-        private List<Trainer> ListTrainersOfCourse { get; set; } = new List<Trainer>() { };
+        private StudentsOfCourse StudentsOfCourseInstance { get; set; } = new StudentsOfCourse();
+        private TrainersOfCourse TrainersOfCourseInstance { get; set; } = new TrainersOfCourse();
+        //private List<Student> ListStudentsOfCourse { get; set; } = new List<Student>() { };
+        //private List<Trainer> ListTrainersOfCourse { get; set; } = new List<Trainer>() { };
         
 
 
@@ -43,8 +45,7 @@ namespace IndividualPartA
             CourseType = Helper.GetCourseType();
             CourseStartDate = Helper.GetCourseStartDate();
             CourseEndDate = Helper.GetCourseEndDate();
-            //ListStudentsOfCourse = Helper.GetEmptyListStudentsOfCourse();
-            //ListTrainersOfCourse = Helper.GetEmptyListTrainersOfCourse();
+            
 
 
 
@@ -73,19 +74,19 @@ namespace IndividualPartA
             return CourseType;
         }
 
-        public List<Student> ReturnListStudentsOfCourse()
+        public StudentsOfCourse ReturnStudentsOfCourseInstance()
         {
-            return ListStudentsOfCourse;
+            return StudentsOfCourseInstance;
         }
 
         public void AddStudentToCourse(Student student)
         {
-            ListStudentsOfCourse.Add(student);
+            StudentsOfCourseInstance.AddStudentToCourse(student);
         }
 
         public void AddTrainerToCourse(Trainer trainer)
         {
-            ListTrainersOfCourse.Add(trainer);
+            TrainersOfCourseInstance.AddTrainerToCourse(trainer);
         }
 
 

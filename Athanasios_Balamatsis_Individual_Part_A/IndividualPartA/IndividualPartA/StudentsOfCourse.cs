@@ -8,8 +8,21 @@ namespace IndividualPartA
 {
     class StudentsOfCourse
     {
+        // fields & properties
+        private static List<Student> ListStudentsOfCourse = new List<Student>() { };
 
-        public static List<Student> ListStudentsOfCourse = new List<Student>() { };
+
+        // methods
+        public void AddStudentToCourse(Student student)
+        {
+            ListStudentsOfCourse.Add(student);
+        }
+
+        public List<Student> ReturnListStudentsOfCourse()
+        {
+            return ListStudentsOfCourse;
+        }
+        
         
 
         

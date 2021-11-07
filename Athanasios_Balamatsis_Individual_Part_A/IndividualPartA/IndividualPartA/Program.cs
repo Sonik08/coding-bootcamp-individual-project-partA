@@ -89,7 +89,7 @@ namespace IndividualPartA
                     Console.WriteLine(listAllCourses[indexSelected] is Course);
                     Console.WriteLine(tempStudent is Student);
                     listAllCourses[indexSelected].AddStudentToCourse(tempStudent);
-                    Console.WriteLine(listAllCourses[indexSelected].ReturnListStudentsOfCourse().Count());
+                    Console.WriteLine(listAllCourses[indexSelected].ReturnStudentsOfCourseInstance().ReturnListStudentsOfCourse().Count());
                     Console.WriteLine("Successfully subscribed to the course");
                 }
                 
