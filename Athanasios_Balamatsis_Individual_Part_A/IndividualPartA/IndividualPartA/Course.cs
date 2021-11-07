@@ -30,8 +30,8 @@ namespace IndividualPartA
         private CourseType CourseType { get; set; }
         private DateTime CourseStartDate { get; set; }
         private DateTime CourseEndDate { get; set; }
-        private List<Student> ListStudentsOfCourse { get; set; }
-        private List<Trainer> ListTrainersOfCourse { get; set; }
+        private List<Student> ListStudentsOfCourse { get; set; } = new List<Student>() { };
+        private List<Trainer> ListTrainersOfCourse { get; set; } = new List<Trainer>() { };
         
 
 
@@ -43,8 +43,8 @@ namespace IndividualPartA
             CourseType = Helper.GetCourseType();
             CourseStartDate = Helper.GetCourseStartDate();
             CourseEndDate = Helper.GetCourseEndDate();
-            ListStudentsOfCourse = Helper.GetEmptyListStudentsOfCourse();
-            ListTrainersOfCourse = Helper.GetEmptyListTrainersOfCourse();
+            //ListStudentsOfCourse = Helper.GetEmptyListStudentsOfCourse();
+            //ListTrainersOfCourse = Helper.GetEmptyListTrainersOfCourse();
 
 
 

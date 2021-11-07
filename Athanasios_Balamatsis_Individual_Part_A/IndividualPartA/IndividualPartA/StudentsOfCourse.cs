@@ -9,14 +9,9 @@ namespace IndividualPartA
     class StudentsOfCourse
     {
 
-        public static List<Student> ListOfStudentsOfCourse = new List<Student>()
-        {
-            
-        };
+        public static List<Student> ListStudentsOfCourse = new List<Student>() { };
+        
 
-        public StudentsOfCourse(Student student)
-        {
-            ListOfStudentsOfCourse.Add(student);
-        }
+        
     }
 }
