@@ -47,39 +47,64 @@ namespace IndividualPartA
                 Trainer tempTrainer = new Trainer();
                 listAllTrainers.Add(tempTrainer);
 
-                Console.WriteLine($"There are {listAllCourses.Count} available courses");
-                if (listAllCourses.Count == 0)
+                Console.WriteLine("Please select courses for this trainer");
+                bool loopControlVariable = true;
+
+                List<int> listUsedIndexesOfCourses = new List<int>() { };
+                while (loopControlVariable)
                 {
-                    Console.WriteLine("Unfortunately there are no available courses ");
-                }
-                else
-                {
-                    Console.WriteLine("Please Select one of the following courses");
-                    Console.WriteLine(" ");
-                    int courseIndex = 0;
-                    foreach (Course course in listAllCourses)
+                    Console.WriteLine($"There are {listAllCourses.Count - listUsedIndexesOfCourses.Count} available courses");
+                    if (listAllCourses.Count - listUsedIndexesOfCourses.Count == 0)
                     {
-                        Console.WriteLine($"Press {courseIndex} for the course with id {courseIndex}, title '{course.ShowCourseTitle()}', stream '{course.ShowCourseStream()} and type '{course.ShowCourseType()}'");
-                        Console.WriteLine("___________________________");
-                        courseIndex++;
+                        Console.WriteLine("Unfortunately there are no more available courses ");
+                        break;
                     }
-
-                    Console.WriteLine("Please enter the course id of your choice");
-                    bool isNumber = int.TryParse(Console.ReadLine(), out int indexSelected);
-
-                    while (!isNumber || indexSelected >= courseIndex)
+                    else
                     {
-                        Console.WriteLine("Invalid input. Please enter the valid course id of your choice");
-                        isNumber = int.TryParse(Console.ReadLine(), out indexSelected);
-                    }
+                        Console.WriteLine("Please Select one of the following courses");
+                        Console.WriteLine(" ");
+                        int courseIndex = 0;
+                        foreach (Course course in listAllCourses)
+                        {
+                            if (listUsedIndexesOfCourses.Contains(courseIndex))
+                            {
+                                courseIndex++;
+                                continue;
+                            }
+                            Console.WriteLine($"Press {courseIndex} for the course with id {courseIndex}, title '{course.ShowCourseTitle()}', stream '{course.ShowCourseStream()} and type '{course.ShowCourseType()}'");
+                            Console.WriteLine("___________________________");
+                            courseIndex++;
+                        }
 
-                    Console.WriteLine("You have selected the following course");
-                    listAllCourses[indexSelected].ShowData();
-                    Console.WriteLine(listAllCourses[indexSelected] is Course);
-                    Console.WriteLine(tempTrainer is Trainer);
-                    listAllCourses[indexSelected].AddTrainerToCourse(tempTrainer);
-                    Console.WriteLine(listAllCourses[indexSelected].ReturnTrainersOfCourseInstance().ReturnListTrainersOfCourse().Count());
-                    Console.WriteLine("Successfully subscribed to the course");
+                        Console.WriteLine("Please enter the course id of your choice");
+                        bool isNumber = int.TryParse(Console.ReadLine(), out int indexSelected);
+
+                        while (!isNumber || indexSelected >= courseIndex)
+                        {
+                            Console.WriteLine("Invalid input. Please enter the valid course id of your choice");
+                            isNumber = int.TryParse(Console.ReadLine(), out indexSelected);
+                        }
+
+                        listUsedIndexesOfCourses.Add(indexSelected);
+                        Console.WriteLine("You have selected the following course");
+                        listAllCourses[indexSelected].ShowData();
+                        Console.WriteLine(listAllCourses[indexSelected] is Course);
+                        Console.WriteLine(tempTrainer is Trainer);
+                        listAllCourses[indexSelected].AddTrainerToCourse(tempTrainer);
+                        Console.WriteLine(listAllCourses[indexSelected].ReturnTrainersOfCourseInstance().ReturnListTrainersOfCourse().Count());
+                        Console.WriteLine("Successfully subscribed to the course");
+                        Console.WriteLine("The length of the list is" + listUsedIndexesOfCourses.Count);
+                        Console.WriteLine(listUsedIndexesOfCourses.Contains(0));
+                    }
+                    Console.WriteLine("Would you like to add another course to this trainer? Enter 'Y' for Yes or 'N' for No");
+                    string userResponse = (Console.ReadLine()).ToUpper();
+                    while (userResponse != "N" && userResponse != "Y")
+                    {
+                        Console.WriteLine("Invalid input. Would you like to add another course to this trainer? Enter 'Y' for Yes or 'N' for No");
+                        userResponse = (Console.ReadLine()).ToUpper();
+                    }
+                    loopControlVariable = (userResponse == "N") ? false : true;
+
 
                 }
 
