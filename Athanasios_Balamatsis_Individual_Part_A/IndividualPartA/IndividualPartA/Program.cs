@@ -9,20 +9,138 @@ namespace IndividualPartA
 {
     class Program
     {
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
-            
+
+            // define four variables each one corresponding to one of the four main lists
+
+            //In the following list, every newly created course will be added
             var listAllCourses = new List<Course>();
-            Console.WriteLine(listAllCourses.Count);
+            //Console.WriteLine(listAllCourses.Count);
 
-            listAllCourses.Add(new Course());
-            listAllCourses.Add(new Course());
-            listAllCourses.Add(new Course());
+            //In the following list, every newly created trainer will be added
+            var listAllTrainers = new List<Trainer>();
+            //Console.WriteLine(listAllTrainers.Count);
 
-            foreach (Course course in listAllCourses)
+            //In the following list, every newly created student will be added
+            var listAllStudents = new List<Student>();
+            //Console.WriteLine(listAllStudents.Count);
+
+            //In the following list, every newly created assignment will be added
+            var listAllAssignments = new List<Assignment>();
+            //Console.WriteLine(listAllAssignments.Count);
+
+
+
+            // Define methods that each one creates instance of one of the four main classes.
+            // Each newly created instance is added to the corresponding main list where instances of the same class are stored.
+            
+            // Define method that creates instance of Course and stores it to the listAllCourses list
+            void CreateCourse()
             {
-                course.ShowData();
+                listAllCourses.Add(new Course());
             }
+
+            // Define method that creates instance of Trainer and stores it to the listAllTrainers list
+            void CreateTrainer()
+            {
+                Trainer tempTrainer = new Trainer();
+                listAllTrainers.Add(tempTrainer);
+                
+                
+            }
+
+            // Define method that creates instance of Student and stores it to the listAllStudents list
+            // The newly created student selects one of the courses in the listAllCourses list.
+            // If the list is empty the student is not assigned a course
+            void CreateStudent()
+            {
+                Student tempStudent = new Student();
+                listAllStudents.Add(tempStudent);
+
+                Console.WriteLine($"There are {listAllCourses.Count} available courses");
+                if (listAllCourses.Count == 0)
+                {
+                    Console.WriteLine("Unfortunately there are no available courses ");
+                }
+                else
+                {
+                    Console.WriteLine("Please Select one of the following courses");
+                    int courseIndex = 0;
+                    foreach (Course course in listAllCourses)
+                    {
+                        Console.WriteLine($"Press {courseIndex} for the course with id {courseIndex}, title '{course.ShowCourseTitle()}', stream '{course.ShowCourseStream()} and type '{course.ShowCourseType()}'");
+                        Console.WriteLine("");
+                        Console.WriteLine("___________________________");
+                    }
+
+                    Console.WriteLine("Please enter the course id of your choice");
+                    bool isNumber = int.TryParse(Console.ReadLine(), out int indexSelected);
+                    while (!isNumber)
+                    {
+                        Console.WriteLine("Invalid input. Please enter the valid course id of your choice");
+                        isNumber = int.TryParse(Console.ReadLine(), out indexSelected);
+                        if ( isNumber == false)
+                        {
+
+                        }
+                    }
+                    
+                    bool isWithinRange = (indexSelected >= 0 && indexSelected < listAllCourses.Count) ? true:false;
+                    while (!isWithinRange || !isNumber)
+                    {
+                        Console.WriteLine("Invalid input. Please enter the valid course id of your choice");
+                        isNumber = int.TryParse(Console.ReadLine(), out indexSelected);
+                    }
+
+
+                    Console.WriteLine();
+
+                }
+                listAllCourses
+                Course.AddStudentToCourse(tempStudent);
+            }
+
+            // Define method that creates instance of Assignment and stores it to the listAllAssignments list
+            void CreateAssignment()
+            {
+                listAllAssignments.Add(new Assignment());
+            }
+
+            CreateCourse();
+            CreateCourse();
+            
+            Helper.PrintAllCourses(listAllCourses);
+
+
+
+
+            
+
+            //foreach (Course course in listAllCourses)
+            //{
+            //    //course.ShowData();
+            //    switch (course.ShowStream())
+            //    {
+            //        case CourseStream.CSHARP:
+            //            Console.WriteLine("It's C#");
+            //            break;
+            //        case CourseStream.JAVA:
+            //            Console.WriteLine("It's Java");
+            //            break;
+            //        case CourseStream.JAVASCRIPT:
+            //            Console.WriteLine("It's JavaScript");
+            //            break;
+            //        default:
+            //            Console.WriteLine("It's Python");
+            //            break;
+
+
+
+            //    }
+            //    Console.WriteLine(" ");
+            //    Console.WriteLine(" ");
+            //}
             //Course firstCourse = new Course();
             //firstCourse.ShowData();
 

@@ -20,6 +20,7 @@ namespace IndividualPartA
             FirstName = Helper.GetName("first name");
             LastName = Helper.GetName("last name");
             DateOfBirth = Helper.GetDateOfBirth();
+            TuitionFees = Helper.GetTuitionFees();
         }
 
 
@@ -29,6 +30,7 @@ namespace IndividualPartA
             Console.WriteLine(FirstName);
             Console.WriteLine(LastName);
             Console.WriteLine(DateOfBirth);
+            Console.WriteLine(TuitionFees);
 
         }
     }

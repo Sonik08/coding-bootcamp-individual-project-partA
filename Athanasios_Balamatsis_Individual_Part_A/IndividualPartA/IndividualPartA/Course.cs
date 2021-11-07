@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace IndividualPartA
 {
     // Enumerations        
-    enum CourseStream
+    public enum CourseStream
     {
         JAVA,
         CSHARP,
@@ -15,7 +15,7 @@ namespace IndividualPartA
         JAVASCRIPT
 
     }
-    enum CourseType
+    public enum CourseType
     {
         FT,  //Full-time
         PT   //Part-time
@@ -30,6 +30,8 @@ namespace IndividualPartA
         private CourseType CourseType { get; set; }
         private DateTime CourseStartDate { get; set; }
         private DateTime CourseEndDate { get; set; }
+        public static List<Student> ListStudentsOfCourse { get; set; }
+        public static List<Trainer> ListTrainersOfCourse { get; set; }
         
 
 
@@ -41,6 +43,8 @@ namespace IndividualPartA
             CourseType = Helper.GetCourseType();
             CourseStartDate = Helper.GetCourseStartDate();
             CourseEndDate = Helper.GetCourseEndDate();
+            
+            
         }
 
         // Methods
@@ -51,6 +55,29 @@ namespace IndividualPartA
             Console.WriteLine(CourseType);
             Console.WriteLine(CourseStartDate);
             Console.WriteLine(CourseEndDate);
+        }
+
+        public string ShowCourseTitle()
+        {
+            return CourseTitle;
+        }
+        public CourseStream ShowCourseStream()
+        {
+            return CourseStream;
+        }
+        public CourseType ShowCourseType()
+        {
+            return CourseType;
+        }
+
+        public static void AddStudentToCourse(Student student)
+        {
+            ListStudentsOfCourse.Add(student);
+        }
+
+        public static void AddTrainerToCourse(Student student)
+        {
+            ListStudentsOfCourse.Add(student);
         }
 
 

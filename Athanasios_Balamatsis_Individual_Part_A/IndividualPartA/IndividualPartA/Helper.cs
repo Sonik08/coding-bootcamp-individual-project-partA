@@ -8,6 +8,18 @@ namespace IndividualPartA
 {
     class Helper
     {
+        // START - METHOD THAT PRINTS THE ELEMENTS OF A LIST
+        public static void PrintAllCourses(List<Course> listAllCourses)
+        {
+            foreach (Course course in listAllCourses)
+            {
+                course.ShowData();
+                Console.WriteLine(" ");
+            }
+        }
+        // END - METHOD THAT PRINTS THE ELEMENTS OF A LIST
+
+
         // START - METHODS OF COURSE CLASS
 
         //The following method assigns to the Course class object the courseTitle value
@@ -131,7 +143,7 @@ namespace IndividualPartA
         //END - COMMON METHODS FOR TRAINER & STUDENT CLASS
 
 
-        //START - METHOD FOR STUDENT CLASS
+        //START - METHODs FOR STUDENT CLASS
 
         //The following method assigns to student class' object a DateTime value
         public static DateTime GetDateOfBirth()
@@ -144,6 +156,20 @@ namespace IndividualPartA
             dateOfBirth = today.Subtract(timespan);
 
             return dateOfBirth; 
+        }
+
+        //The following method assigns to student class' instance an integer value
+        public static int GetTuitionFees()
+        {
+            Console.WriteLine("Please enter Tuition Fees");
+            bool isNumber = int.TryParse(Console.ReadLine(), out int tuitionFees);
+            while (!isNumber)
+            {
+                Console.WriteLine("Invalid input. Please enter valid Tuition Fees");
+                isNumber = int.TryParse(Console.ReadLine(), out tuitionFees);
+            }
+
+            return tuitionFees;
         }
 
         //END - METHOD FOR STUDENT CLASS
