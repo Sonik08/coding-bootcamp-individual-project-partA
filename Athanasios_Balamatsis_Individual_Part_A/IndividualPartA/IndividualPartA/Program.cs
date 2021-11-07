@@ -34,7 +34,7 @@ namespace IndividualPartA
 
             // Define methods that each one creates instance of one of the four main classes.
             // Each newly created instance is added to the corresponding main list where instances of the same class are stored.
-            
+
             // Define method that creates instance of Course and stores it to the listAllCourses list
             void CreateCourse()
             {
@@ -46,8 +46,47 @@ namespace IndividualPartA
             {
                 Trainer tempTrainer = new Trainer();
                 listAllTrainers.Add(tempTrainer);
-                
-                
+
+                Console.WriteLine($"There are {listAllCourses.Count} available courses");
+                if (listAllCourses.Count == 0)
+                {
+                    Console.WriteLine("Unfortunately there are no available courses ");
+                }
+                else
+                {
+                    Console.WriteLine("Please Select one of the following courses");
+                    Console.WriteLine(" ");
+                    int courseIndex = 0;
+                    foreach (Course course in listAllCourses)
+                    {
+                        Console.WriteLine($"Press {courseIndex} for the course with id {courseIndex}, title '{course.ShowCourseTitle()}', stream '{course.ShowCourseStream()} and type '{course.ShowCourseType()}'");
+                        Console.WriteLine("___________________________");
+                        courseIndex++;
+                    }
+
+                    Console.WriteLine("Please enter the course id of your choice");
+                    bool isNumber = int.TryParse(Console.ReadLine(), out int indexSelected);
+
+                    while (!isNumber || indexSelected >= courseIndex)
+                    {
+                        Console.WriteLine("Invalid input. Please enter the valid course id of your choice");
+                        isNumber = int.TryParse(Console.ReadLine(), out indexSelected);
+                    }
+
+                    Console.WriteLine("You have selected the following course");
+                    listAllCourses[indexSelected].ShowData();
+                    Console.WriteLine(listAllCourses[indexSelected] is Course);
+                    Console.WriteLine(tempTrainer is Trainer);
+                    listAllCourses[indexSelected].AddTrainerToCourse(tempTrainer);
+                    Console.WriteLine(listAllCourses[indexSelected].ReturnTrainersOfCourseInstance().ReturnListTrainersOfCourse().Count());
+                    Console.WriteLine("Successfully subscribed to the course");
+
+                }
+
+             
+
+
+
             }
 
             // Define method that creates instance of Student and stores it to the listAllStudents list
@@ -81,9 +120,9 @@ namespace IndividualPartA
                     while (!isNumber || indexSelected >= courseIndex)
                     {
                         Console.WriteLine("Invalid input. Please enter the valid course id of your choice");
-                        isNumber = int.TryParse(Console.ReadLine(), out indexSelected);                        
+                        isNumber = int.TryParse(Console.ReadLine(), out indexSelected);
                     }
-                    
+
                     Console.WriteLine("You have selected the following course");
                     listAllCourses[indexSelected].ShowData();
                     Console.WriteLine(listAllCourses[indexSelected] is Course);
@@ -92,8 +131,8 @@ namespace IndividualPartA
                     Console.WriteLine(listAllCourses[indexSelected].ReturnStudentsOfCourseInstance().ReturnListStudentsOfCourse().Count());
                     Console.WriteLine("Successfully subscribed to the course");
                 }
-                
-                //Course.AddStudentToCourse(tempStudent);
+
+
             }
 
             // Define method that creates instance of Assignment and stores it to the listAllAssignments list
@@ -104,14 +143,17 @@ namespace IndividualPartA
 
             CreateCourse();
             CreateCourse();
-            CreateStudent();
-            
+            CreateTrainer();
+            Console.WriteLine("GAMIESAI");
+
+
+
             //Helper.PrintAllCourses(listAllCourses);
 
 
 
 
-            
+
 
             //foreach (Course course in listAllCourses)
             //{
@@ -152,9 +194,8 @@ namespace IndividualPartA
 
             //Assignment firstAssignment = new Assignment();
             //firstAssignment.ShowData();
-
-
-
         }
     }
 }
+
+

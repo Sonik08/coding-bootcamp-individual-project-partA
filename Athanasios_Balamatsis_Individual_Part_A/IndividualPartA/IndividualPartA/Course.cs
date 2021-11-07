@@ -52,6 +52,7 @@ namespace IndividualPartA
         }
 
         // Methods
+        //Methods that show data of instances
         public void ShowData()
         {
             Console.WriteLine(CourseTitle);
@@ -60,7 +61,6 @@ namespace IndividualPartA
             Console.WriteLine(CourseStartDate);
             Console.WriteLine(CourseEndDate);
         }
-
         public string ShowCourseTitle()
         {
             return CourseTitle;
@@ -74,11 +74,18 @@ namespace IndividualPartA
             return CourseType;
         }
 
+        //Methods that return instances of classes associated with lists of students and trainers
         public StudentsOfCourse ReturnStudentsOfCourseInstance()
         {
             return StudentsOfCourseInstance;
         }
 
+        public TrainersOfCourse ReturnTrainersOfCourseInstance()
+        {
+            return TrainersOfCourseInstance;
+        }
+
+        //Methods that add either student or trainer to the list of the course which is an instance of either the StudentsOfCourse or TrainersOfCourse class
         public void AddStudentToCourse(Student student)
         {
             StudentsOfCourseInstance.AddStudentToCourse(student);
