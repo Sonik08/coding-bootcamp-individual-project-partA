@@ -9,29 +9,20 @@ namespace IndividualPartA
     class Student
     {
         // fields & properties
-        private string FirstName { get; set; }
-        private string LastName { set; get; }
-        private DateTime DateOfBirth { set; get; }
-        private int TuitionFees { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { set; get; }
+        public DateTime DateOfBirth { set; get; }
+        public int TuitionFees { get; set; }
+        public List<Assignment> AssignmentsOfStudent = new List<Assignment>() { };
+        public List<Course> CoursesOfStudent = new List<Course>() { };
 
-        // Constructors
-        public Student()
+        // Methods
+        public void MakeStudent()
         {
             FirstName = Helper.GetName("first name");
             LastName = Helper.GetName("last name");
-            DateOfBirth = Helper.GetDateOfBirth();
+            DateOfBirth = Helper.GetBirthDate();
             TuitionFees = Helper.GetTuitionFees();
-        }
-
-
-        // Methods
-        public void ShowData()
-        {
-            Console.WriteLine(FirstName);
-            Console.WriteLine(LastName);
-            Console.WriteLine(DateOfBirth);
-            Console.WriteLine(TuitionFees);
-
         }
     }
 }

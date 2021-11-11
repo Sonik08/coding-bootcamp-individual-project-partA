@@ -25,34 +25,16 @@ namespace IndividualPartA
     {
         
         // Fields & Properties
-        private string CourseTitle { get; set; }
-        private CourseStream CourseStream { get; set; }
-        private CourseType CourseType { get; set; }
-        private DateTime CourseStartDate { get; set; }
-        private DateTime CourseEndDate { get; set; }
-        private StudentsOfCourse StudentsOfCourseInstance { get; set; } = new StudentsOfCourse();
-        private TrainersOfCourse TrainersOfCourseInstance { get; set; } = new TrainersOfCourse();
-        //private List<Student> ListStudentsOfCourse { get; set; } = new List<Student>() { };
-        //private List<Trainer> ListTrainersOfCourse { get; set; } = new List<Trainer>() { };
+        public string CourseTitle { get; set; }
+        public CourseStream CourseStream { get; set; }
+        public CourseType CourseType { get; set; }
+        public DateTime CourseStartDate { get; set; }
+        public DateTime CourseEndDate { get; set; }
+        public List<Student> StudentsOfCourse { get; set; } = new List<Student>();
+        public List<Trainer> TrainersOfCourse { get; set; } = new List<Trainer>();
+        public List<Assignment> AssignmentsOfCourse { get; set; } = new List<Assignment>();
         
-
-
-        // Constructors
-        public Course()
-        {
-            CourseTitle = Helper.GetCourseTitle();
-            CourseStream = Helper.GetCourseStream();
-            CourseType = Helper.GetCourseType();
-            CourseStartDate = Helper.GetCourseStartDate();
-            CourseEndDate = Helper.GetCourseEndDate();
-            
-
-
-
-        }
-
         // Methods
-        //Methods that show data of instances
         public void ShowData()
         {
             Console.WriteLine(CourseTitle);
@@ -61,40 +43,19 @@ namespace IndividualPartA
             Console.WriteLine(CourseStartDate);
             Console.WriteLine(CourseEndDate);
         }
-        public string ShowCourseTitle()
+
+        public void MakeCourse()
         {
-            return CourseTitle;
-        }
-        public CourseStream ShowCourseStream()
-        {
-            return CourseStream;
-        }
-        public CourseType ShowCourseType()
-        {
-            return CourseType;
+            CourseTitle = Helper.GetCourseTitle();
+            CourseStream = Helper.GetCourseStream();
+            CourseType = Helper.GetCourseType();
+            CourseStartDate = Helper.GetCourseStartDate();
+            CourseEndDate = Helper.GetCourseEndDate(CourseStartDate, CourseType);
         }
 
-        //Methods that return instances of classes associated with lists of students and trainers
-        public StudentsOfCourse ReturnStudentsOfCourseInstance()
-        {
-            return StudentsOfCourseInstance;
-        }
 
-        public TrainersOfCourse ReturnTrainersOfCourseInstance()
-        {
-            return TrainersOfCourseInstance;
-        }
 
-        //Methods that add either student or trainer to the list of the course which is an instance of either the StudentsOfCourse or TrainersOfCourse class
-        public void AddStudentToCourse(Student student)
-        {
-            StudentsOfCourseInstance.AddStudentToCourse(student);
-        }
 
-        public void AddTrainerToCourse(Trainer trainer)
-        {
-            TrainersOfCourseInstance.AddTrainerToCourse(trainer);
-        }
 
 
 

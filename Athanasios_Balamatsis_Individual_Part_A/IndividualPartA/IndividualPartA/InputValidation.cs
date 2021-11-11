@@ -60,10 +60,6 @@ namespace IndividualPartA
         }
 
 
-        //public static bool IsValidCourseStartDate(string courseStartDate)
-        //{
-        //    if (courseSt)
-        //    return true;
-        //}
+       
     }
 }

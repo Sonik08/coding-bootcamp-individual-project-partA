@@ -44,16 +44,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assignment.cs" />
-    <Compile Include="AssignmentsPerCourse.cs" />
     <Compile Include="Course.cs" />
+    <Compile Include="Database.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="InputValidation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs" />
-    <Compile Include="StudentsOfCourse.cs" />
     <Compile Include="Trainer.cs" />
-    <Compile Include="TrainersOfCourse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

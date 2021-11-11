@@ -10,24 +10,18 @@ namespace IndividualPartA
     {
 
         // fields & properties
-        private string FirstName { get; set; }
-        private string LastName { get; set; }
-        private string Subject { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Subject { get; set; }
 
 
         // Constructors
-        public Trainer()
+        public void MakeTrainer()
         {
             FirstName = Helper.GetName("first name");
             LastName = Helper.GetName("last name");
             Subject = Helper.GetText(20, "subject");
         }
-
-        public void ShowData()
-        {
-            Console.WriteLine(FirstName);
-            Console.WriteLine(LastName);
-            Console.WriteLine(Subject);            
-        }
+       
     }
 }
